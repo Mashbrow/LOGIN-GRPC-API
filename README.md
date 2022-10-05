@@ -25,6 +25,7 @@ The user client is in REST so to be used with http requests. The following GRPC 
 - user  
 - movie
 - showtime  
+  
 In addition, the REST serveur booking is required to be launched.     
 
 ## User
