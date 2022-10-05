@@ -24,8 +24,8 @@ To test a client, first launch the corresponding server, and then launch the cli
 The user client is in REST so to be used with http requests. The following GRPC servers are required to be launched:  
 - user  
 - movie
-- booking  
 - showtime  
+In addition, the REST serveur booking is required to be launched.     
 
 ## User
 Folder containing the user server. Execute the user.py file to launch the server.
@@ -39,15 +39,6 @@ NOTE: the booking folder also contains a booking.py file that dosesn't launch th
 
 ## Showtime
 Folder containing the showtime server. Execute the showtime.py file to launch the server.
-
- 
-
-
-
-
-
-
-
 
 
 # REST REQUESTS
