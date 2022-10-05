@@ -3,12 +3,18 @@ import grpc
 import movie_pb2
 import movie_pb2_grpc
 
-
+### Client for the movie API
 def get_movie_by_id(stub,id):
+    """
+        Request service to get a movie specifying an id
+    """
     movie = stub.GetMovieByID(id)
     print(movie)
 
 def get_list_movies(stub):
+    """
+        Request service to get all movies
+    """
     allmovies = stub.GetListMovies(movie_pb2.Empty())
     for movie in allmovies:
         print("Movie called %s" % (movie.title))
