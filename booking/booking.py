@@ -10,7 +10,7 @@ from operator import itemgetter
 app = Flask(__name__)
 
 #Init Config
-PORT = 3201 
+PORT = 3003
 HOST = '0.0.0.0'
 
 #Load database

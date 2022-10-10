@@ -12,6 +12,10 @@ services:
     build: ./booking/
     ports:
         - "3003:3003"
+  booking-grpc:
+    build: ./booking-grpc/
+    ports:
+        - "3005:3005"
   user:
     build: ./user/
     ports:

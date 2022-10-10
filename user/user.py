@@ -38,7 +38,7 @@ def get_average_user_rating(userid):
 
    #Request booking api (REST) to get bookings of the user
    host_ = 'http://' + request.host.split(':')[0]
-   request_booking = requests.get(host_ + ':' + '3201'+'/booking/'+str(userid))
+   request_booking = requests.get(host_ + ':' + '3003'+'/booking/'+str(userid))
    if request_booking.ok : 
       bookings = request_booking.json()
    else:
