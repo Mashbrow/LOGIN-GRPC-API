@@ -5,15 +5,28 @@ import booking_pb2_grpc
 
 
 def get_booking_for_user(stub,userid):
+    """
+        Request booking (GRPC) service to get bookings of a user given an id
+        Argument:
+            - userid: booking_pb2.UserId, the id of a user
+    """
     bookings = stub.GetBookingForUser(userid)
     print(bookings)
 
 def get_json(stub):
+    """
+        Request booking (GRPC) service to get all the bookings in db
+    """
     allbookings = stub.GetJson(booking_pb2.EmptyBooking())
     for b in allbookings:
         print("Booking of user %s" % (b.userid))
 
 def add_booking_by_user(stub, new_booking):
+    """
+        Add booking for a specific user
+        Argument:
+            - new_booking: booking_pb2.NewBookingForUser, the booking to be added
+    """
     bookings = stub.AddBookingByUser(new_booking)
     print(bookings)
 
@@ -24,12 +37,12 @@ def run():
     with grpc.insecure_channel('localhost:3005') as channel:
         stub = booking_pb2_grpc.BookingStub(channel)
 
-        print("-------------- GetScheduleByDate --------------")
+        print("-------------- GetBookingById --------------")
         bookingUser = booking_pb2.UserId(id="chris_rivers")
         print(bookingUser.id)
         get_booking_for_user(stub, bookingUser)
         
-        print("-------------- GetListSchedule --------------")
+        print("-------------- GetListBooking --------------")
         get_json(stub)
 
         print("-------------- AddBookingForUser --------------")

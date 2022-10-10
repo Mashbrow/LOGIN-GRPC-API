@@ -11,18 +11,29 @@ from concurrent import futures
 from werkzeug.exceptions import NotFound
 from operator import itemgetter
 
+### Modifying the REST service to become a GRPC Service 
 class BookingServicer(booking_pb2_grpc.BookingServicer):
 
    def __init__(self):
+      """
+         Load Database
+      """
       with open('{}/data/bookings.json'.format("."), "r") as jsf:
                self.db = json.load(jsf)["bookings"]
 
    
    def GetJson(self, request, context):
+      """
+         Get all bookings
+      """
       for booking in self.db:
          yield booking_pb2.BookingData(userid = booking['userid'], dates=booking['dates'])
       
    def GetBookingForUser(self, request, context):
+      """
+         Get bookings of a user speficying an id
+      """
+      #Simulating computation time
       time.sleep(3)
       for booking in self.db:
          if booking["userid"]==request.id:
@@ -32,7 +43,13 @@ class BookingServicer(booking_pb2_grpc.BookingServicer):
       return booking_pb2.BookingData(userid="", dates=[])
 
    def AddBookingByUser(self, request, context):
+      """
+         Add booking of a movie for user spefifying its id
+      """
+      #Debugging use
       print("yes:",request)
+      ### Check that the movie is scheduled
+      ##GRPC Request to the Showtime API
       schedules = []
       with grpc.insecure_channel('localhost:3002') as channel:
          stub = showtime_pb2_grpc.ShowtimeStub(channel)
@@ -50,6 +67,7 @@ class BookingServicer(booking_pb2_grpc.BookingServicer):
          print("Error: movie not scheduled at this date")
          return booking_pb2.BookingData(userid="", dates =[])
       
+      ## Create and add the booking if so
       for b in self.db:
          if b["userid"] == request.userid:
             dates = [b_["date"] for b_ in b["dates"]]

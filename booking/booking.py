@@ -9,22 +9,27 @@ from operator import itemgetter
 
 app = Flask(__name__)
 
-PORT = 3201 
+#Init Config
+PORT = 3003
 HOST = '0.0.0.0'
 
+#Load database
 with open('{}/data/bookings.json'.format("."), "r") as jsf:
    bookings = json.load(jsf)["bookings"]
 
+#Index route
 @app.route("/", methods=['GET'])
 def home():
    print("coucou" + request.host)
    return "<h1 style='color:blue'>Welcome to the Booking service!</h1>"
 
+#Get all bookings
 @app.route("/booking", methods=['GET'])
 def get_json():
    res = make_response(jsonify(bookings), 200)
    return res
 
+#Get bookings of a user specifying an id in the  path
 @app.route("/booking/<userid>", methods=['GET'])
 def get_booking_for_user(userid):
    for b in bookings:
@@ -32,12 +37,13 @@ def get_booking_for_user(userid):
           return make_response(jsonify(b), 200)
    return make_response(jsonify({"error":"bad input parameter"}), 400)
 
+#Add a booking for a user specifying its id in the path
 @app.route("/booking/<userid>", methods=['POST'])
 def add_booking_by_user(userid):
+   #Get movie to be added
    req = request.get_json()
    #### Verify that the movie is scheduled
-   #host_ = 'http://' + request.host.split(':')[0]
-   #request_showtime = requests.get(host_ + ':' + '3202'+'/showtime')
+   # GRPC Request to the showtime API 
    schedules = []
    with grpc.insecure_channel('localhost:3002') as channel:
       stub = showtime_pb2_grpc.ShowtimeStub(channel)
