@@ -20,4 +20,8 @@ services:
     build: ./user/
     ports:
         - "3004:3004"
+  user2:
+    build: ./user2/
+    ports:
+        - "3006:3006"
 
