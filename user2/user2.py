@@ -31,13 +31,13 @@ def get_average_user_rating(userid):
       return make_response(jsonify({"error":"no user found"}), 400)
 
 
-   with grpc.insecure_channel('localhost:3005') as channel:
+   with grpc.insecure_channel('dns:///booking-grpc:3005') as channel:
       stub = booking_pb2_grpc.BookingStub(channel)
       bookings = stub.GetBookingForUser(booking_pb2.UserId(id=str(userid)))
       channel.close()
    movies_list = []
 
-   with grpc.insecure_channel('localhost:3001') as channel:
+   with grpc.insecure_channel('dns:///movie:3001') as channel:
       stub = movie_pb2_grpc.MovieStub(channel)
       allMovies = stub.GetListMovies(movie_pb2.Empty())
       for movie in allMovies:

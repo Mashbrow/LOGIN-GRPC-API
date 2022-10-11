@@ -23,7 +23,7 @@ def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
-    with grpc.insecure_channel('localhost:3001') as channel:
+    with grpc.insecure_channel('dns:///movie:3001') as channel:
         stub = movie_pb2_grpc.MovieStub(channel)
 
         print("-------------- GetMovieByID --------------")

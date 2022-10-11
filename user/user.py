@@ -37,8 +37,9 @@ def get_average_user_rating(userid):
       return make_response(jsonify({"error":"no user found"}), 400)
 
    #Request booking api (REST) to get bookings of the user
-   host_ = 'http://' + request.host.split(':')[0]
+   host_ = 'http://booking'
    request_booking = requests.get(host_ + ':' + '3003'+'/booking/'+str(userid))
+
    if request_booking.ok : 
       bookings = request_booking.json()
    else:
@@ -46,7 +47,7 @@ def get_average_user_rating(userid):
    
    #Request movie api (grpc)to get all movies
    movies_list = []
-   with grpc.insecure_channel('localhost:3001') as channel:
+   with grpc.insecure_channel('dns:///movie:3001') as channel:
       stub = movie_pb2_grpc.MovieStub(channel)
       allMovies = stub.GetListMovies(movie_pb2.Empty())
       for movie in allMovies:

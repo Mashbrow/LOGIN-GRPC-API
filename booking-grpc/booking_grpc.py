@@ -51,7 +51,7 @@ class BookingServicer(booking_pb2_grpc.BookingServicer):
       ### Check that the movie is scheduled
       ##GRPC Request to the Showtime API
       schedules = []
-      with grpc.insecure_channel('localhost:3002') as channel:
+      with grpc.insecure_channel('dns:///showtime:3002') as channel:
          stub = showtime_pb2_grpc.ShowtimeStub(channel)
          allSchedule = stub.GetSchedule(showtime_pb2.Empty())
          for schedule in allSchedule:

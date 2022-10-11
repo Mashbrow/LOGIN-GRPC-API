@@ -41,7 +41,7 @@ def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
-    with grpc.insecure_channel('localhost:3005') as channel:
+    with grpc.insecure_channel('dns:///booking-grpc:3005') as channel:
         stub = booking_pb2_grpc.BookingStub(channel)
 
         print("-------------- GetBookingForUser --------------")
