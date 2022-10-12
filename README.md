@@ -3,6 +3,13 @@ Repository for practical work on GRPC.
 This repository also proposes the REST servers and requests described at the end of this README, in the "REST REQUESTS" part.  
 To launch with docker-compose, get to the LOGIN-GRPC-API folder and type `docker-compose up` in your terminal. Then use the requests of the REST servicies.  
 
+  - TP vert effectué.
+    - Les dossiers user et booking correspondent à la version du tp vert.
+  - TP bleu effectué:
+    - La version du TP bleu de booking est dans le dossier `booking-grpc`. Les dossiers user2 et booking_grpc correspondent à la version du tp bleu.
+  - TP rouge effectué:
+    - La version du TP rouge de booking est dans le dossier `client` sous le nom `client_booking_asynchronous`.
+
 ## Client
 Folder that contains the clients corresponding to the servers described in the following sections.
 To test a client, first launch the corresponding server, and then launch the client.
