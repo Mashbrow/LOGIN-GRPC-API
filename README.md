@@ -1,7 +1,7 @@
 # LOGIN-GRPC-API
 Repository for practical work on GRPC.
 This repository also proposes the REST servers and requests described at the end of this README, in the "REST REQUESTS" part.  
-To launch with docker-compose, get to the LOGIN-GRPC-API folder and type docker-compose up in your terminal. Then use the requests of the REST servicies.  
+To launch with docker-compose, get to the LOGIN-GRPC-API folder and type `docker-compose up` in your terminal. Then use the requests of the REST servicies.  
 
 ## Client
 Folder that contains the clients corresponding to the servers described in the following sections.
