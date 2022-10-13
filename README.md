@@ -60,7 +60,7 @@ Folder containing the showtime server. Execute the showtime.py file to launch th
 # REST REQUESTS
 ## BOOKING
 
-Port:3201  
+Port:3003  
 Host: localhost  
 Gets:   
 "/": returns the homepage.  
@@ -70,34 +70,19 @@ Gets:
 Posts:  
 "booking/&lt;userid&gt;": takes a booking as request, adds a booking for the user.  
 
-## MOVIE
-Port:3200  
-Host: localhost  
-Gets:   
-"/": returns the homepage.  
-"/template": returns the homepage following a template.  
-"/json":returns the movie database as a json.  
-"/movie/&lt;movieid&gt;": returns the data for a particular movie as a json.  
-"/moviebytitle": takes a movie title as request, returns the data for this particular movie as a json.  
-
-Posts:  
-"/movie/&lt;movieid&gt;": takes a movie as request, adds a movie to the database.  
-
-Puts:   
-"/movie/&lt;movieid&gt;/&lt;rate&gt;": changes the rating for a given movie.  
-
-## SHOWTIME 
-Port:3202  
-Host: localhost  
-Gets:   
-"/": returns the homepage.  
-"/showtime": returns the showtime database as a json.  
-"/showtime/&lt;date&gt;": returns the shows for a particular date as a json.  
 
 ## USER
-Port:3203  
+Port:3004  
 Host: localhost  
 Gets:   
 "/": returns the homepage.  
 "/user": returns the user database as a json.  
-"/user/&lt;userid&gt;": returns the user with this id as a json.  
+"/user/&lt;userid&gt;": returns the average rating for that user.
+
+## USER2
+Port:3006  
+Host: localhost  
+Gets:   
+"/": returns the homepage.  
+"/user": returns the user database as a json.  
+"/user/&lt;userid&gt;": returns the average rating for that user.
