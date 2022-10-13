@@ -1,14 +1,37 @@
 # LOGIN-GRPC-API
 Repository for practical work on GRPC.
-This repository also proposes the REST servers and requests described at the end of this README, in the "REST REQUESTS" part.  
-To launch with docker-compose, get to the LOGIN-GRPC-API folder and type `docker-compose up` in your terminal. Then use the requests of the REST servicies.  
+This repository also proposes the REST servers and requests described at the end of this README, in the "REST REQUESTS" part.
 
-  - TP vert effectué.
-    - Les dossiers `user` et `booking` correspondent à la version du tp vert.
-  - TP bleu effectué:
-    - La version du TP bleu de booking est dans le dossier `booking-grpc`. Les dossiers `user2` et `booking_grpc` correspondent à la version du tp bleu.
-  - TP rouge effectué:
-    - La version du TP rouge de booking est dans le dossier `client` sous le nom `client_booking_asynchronous`.
+### Installation
+
+First clone this repo with `git clone https://github.com/Mashbrow/LOGIN-GRPC-API`
+To launch with docker-compose, get to the LOGIN-GRPC-API folder and type `docker-compose up` in your terminal. Then use the requests of the REST servicies.
+
+We hade some troubles to get docker working, if docker doesn't work you can still create a Virtual Env by using the following commands:
+
+(Make sure that Virtual Env is installed first)
+
+Then
+
+`python -m venv path/to/myenv`
+
+Activate it:
+
+On Linux, MAC OS `source myenv/bin/activate`
+
+On Windows `.\myenv\Scripts\activate`
+
+Once being done install the requirements:
+`python -m pip install -r requirements.txt`
+
+### What was done so far
+
+  - Green Practical Work done completely.
+    - Folders `user` and `booking` correspond to this version.
+  - Blue Practical Work done completely:
+    - The blue version of booking is in the folder `booking-grpc`, files `users2` and `booking_grpc`correspond to the blue version
+  - Red Practical Work done completely:
+    - The red version of booking can be found in the folder `client` under the name of `client_booking_asynchronous`.
 
 ## Client
 Folder that contains the clients corresponding to the servers described in the following sections.
@@ -21,9 +44,10 @@ To test a client, first launch the corresponding server, and then launch the cli
 - booking  
 - showtime  
 
-"client_booking_asynchronous.py" is the client for the booking service. It works asynchronously. It requires the following servers to be launched:  
+"client_booking_asynchronous.py" is the client for the booking service. It works asynchronously. It requires the following servers to be launched:
 - booking  
-- showtime  
+- showtime
+Note: Nothing has to be done server side, it completely depends on the client to make the connection asynchronous.
 
 "client_showtime.py" is the client for the showtime service. It requires the following servers to be launched:  
 - showtime  
@@ -58,10 +82,10 @@ Host: localhost
 Gets:   
 "/": returns the homepage.  
 "/booking": returns the booking database as a json.  
-"/booking/<userid>": returns the bookings for a particular user as a json.  
+"/booking/&lt;userid&gt;": returns the bookings for a particular user as a json.  
 
 Posts:  
-"booking/<userid>": takes a booking as request, adds a booking for the user.  
+"booking/&lt;userid&gt;": takes a booking as request, adds a booking for the user.  
 
 ## MOVIE
 Port:3200  
@@ -70,14 +94,14 @@ Gets:
 "/": returns the homepage.  
 "/template": returns the homepage following a template.  
 "/json":returns the movie database as a json.  
-"/movie/<movieid>": returns the data for a particular movie as a json.  
+"/movie/&lt;movieid&gt;": returns the data for a particular movie as a json.  
 "/moviebytitle": takes a movie title as request, returns the data for this particular movie as a json.  
 
 Posts:  
-"/movie/<movieid>": takes a movie as request, adds a movie to the database.  
+"/movie/&lt;movieid&gt;": takes a movie as request, adds a movie to the database.  
 
 Puts:   
-"/movie/<movieid>/<rate>": changes the rating for a given movie.  
+"/movie/&lt;movieid&gt;/&lt;rate&gt;": changes the rating for a given movie.  
 
 ## SHOWTIME 
 Port:3202  
@@ -85,7 +109,7 @@ Host: localhost
 Gets:   
 "/": returns the homepage.  
 "/showtime": returns the showtime database as a json.  
-"/showtime/<date>": returns the shows for a particular date as a json.  
+"/showtime/&lt;date&gt;": returns the shows for a particular date as a json.  
 
 ## USER
 Port:3203  
@@ -93,4 +117,4 @@ Host: localhost
 Gets:   
 "/": returns the homepage.  
 "/user": returns the user database as a json.  
-"/user/&lt;userid&rt;": returns the user with this id as a json.  
+"/user/&lt;userid&gt;": returns the user with this id as a json.  
