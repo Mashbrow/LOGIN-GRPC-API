@@ -7,23 +7,6 @@ This repository also proposes the REST servers and requests described at the end
 First clone this repo with `git clone https://github.com/Mashbrow/LOGIN-GRPC-API`
 To launch with docker-compose, get to the LOGIN-GRPC-API folder and type `docker-compose up` in your terminal. Then use the requests of the REST servicies.
 
-We hade some troubles to get docker working, if docker doesn't work you can still create a Virtual Env by using the following commands:
-
-(Make sure that Virtual Env is installed first)
-
-Then
-
-`python -m venv path/to/myenv`
-
-Activate it:
-
-On Linux, MAC OS `source myenv/bin/activate`
-
-On Windows `.\myenv\Scripts\activate`
-
-Once being done install the requirements:
-`python -m pip install -r requirements.txt`
-
 ### What was done so far
 
   - Green Practical Work done completely.
